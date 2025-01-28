@@ -99,7 +99,7 @@ CREATE TABLE tbl_turno_turmas (
     fk_turma INT NOT NULL,
     
 CONSTRAINT FOREIGN KEY (fk_turno)
-REFERENCES tbl_turnos (id),
+REFERENCES tbl_turno (id),
 
 CONSTRAINT FOREIGN KEY (fk_turma)
 REFERENCES tbl_turmas (id)
@@ -138,5 +138,3 @@ REFERENCES tbl_matriculas (id),
 CONSTRAINT FOREIGN KEY (fk_tipo_avaliacao)
 REFERENCES tbl_tipo_avaliacao (id)
 );
-
-
