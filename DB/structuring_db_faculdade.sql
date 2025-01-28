@@ -31,7 +31,13 @@ CREATE TABLE tbl_endereco (
     cep VARCHAR(9) NOT NULL,
     pais VARCHAR(20)  NOT NULL,
     fk_aluno INT NOT NULL UNIQUE,
-    fk_professor INT NOT NULL UNIQUE
+    fk_professor INT NOT NULL UNIQUE,
+    
+CONSTRAINT FOREIGN KEY (fk_aluno)
+REFERENCES tbl_alunos (ra),
+
+CONSTRAINT FOREIGN KEY (fk_professor)
+REFERENCES tbl_professores (id)
 );
 
 CREATE TABLE tbl_cursos (
@@ -46,22 +52,40 @@ CREATE TABLE tbl_disciplinas (
     nome VARCHAR(100) NOT NULL UNIQUE,
     carga_horaria VARCHAR(45) NOT NULL,
     fk_curso INT NOT NULL UNIQUE,
-    fk_professor INT NOT NULL
+    fk_professor INT NOT NULL,
+    
+CONSTRAINT FOREIGN KEY (fk_curso)
+REFERENCES tbl_cursos (id),
+
+CONSTRAINT FOREIGN KEY (fk_professor)
+REFERENCES tbl_professores (id)
 );
 
 CREATE TABLE tbl_turmas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     semestre VARCHAR(45) NOT NULL,
-    fk_disciplina INT NOT NULL
+    fk_disciplina INT NOT NULL,
+    
+CONSTRAINT FOREIGN KEY (fk_disciplina)
+REFERENCES tbl_disciplinas (id)
 );
 
 CREATE TABLE tbl_matriculas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     data_matricula DATE NOT NULL,
-    ra_aluno INT NOT NULL,
+    fk_aluno INT NOT NULL,
     fk_curso INT NOT NULL,
-    fk_turma INT NOT NULL
+    fk_turma INT NOT NULL,
+    
+CONSTRAINT FOREIGN KEY (fk_aluno)
+REFERENCES tbl_alunos (ra),
+
+CONSTRAINT FOREIGN KEY (fk_curso)
+REFERENCES tbl_cursos (id),
+
+CONSTRAINT FOREIGN KEY (fk_turma)
+REFERENCES tbl_turmas (id)
 );
 
 CREATE TABLE tbl_turno (
@@ -72,7 +96,13 @@ CREATE TABLE tbl_turno (
 CREATE TABLE tbl_turno_turmas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     fk_turno INT NOT NULL,
-    fk_turma INT NOT NULL
+    fk_turma INT NOT NULL,
+    
+CONSTRAINT FOREIGN KEY (fk_turno)
+REFERENCES tbl_turnos (id),
+
+CONSTRAINT FOREIGN KEY (fk_turma)
+REFERENCES tbl_turmas (id)
 );
 
 CREATE TABLE tbl_professores_turmas (
@@ -81,7 +111,13 @@ CREATE TABLE tbl_professores_turmas (
     tipo_aula VARCHAR(45) NOT NULL,
     horas_semanais VARCHAR(45) NOT NULL,
     fk_professor INT NOT NULL,
-    fk_turma INT NOT NULL
+    fk_turma INT NOT NULL,
+    
+CONSTRAINT FOREIGN KEY (fk_professor)
+REFERENCES tbl_professores (id),
+
+CONSTRAINT FOREIGN KEY (fk_turma)
+REFERENCES tbl_turmas (id)
 );
 
 CREATE TABLE tbl_tipo_avaliacao (
@@ -94,5 +130,13 @@ CREATE TABLE tbl_notas (
     data_avaliacao DATE,
     fk_matricula INT NOT NULL,
     fk_tipo_avaliacao INT NOT NULL,
-    PRIMARY KEY (fk_matricula, fk_tipo_avaliacao)
+    PRIMARY KEY (fk_matricula, fk_tipo_avaliacao),
+    
+CONSTRAINT FOREIGN KEY (fk_matricula)
+REFERENCES tbl_matriculas (id),
+
+CONSTRAINT FOREIGN KEY (fk_tipo_avaliacao)
+REFERENCES tbl_tipo_avaliacao (id)
 );
+
+
