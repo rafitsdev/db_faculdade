@@ -22,6 +22,11 @@ CREATE TABLE tbl_professores (
     titulo VARCHAR(50) NOT NULL
 );
 
+CREATE TABLE tbl_tipo_entidade (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo_entidade VARCHAR(20) NOT NULL
+);
+
 CREATE TABLE tbl_endereco (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	logradouro VARCHAR(150) NOT NULL,
@@ -30,14 +35,20 @@ CREATE TABLE tbl_endereco (
     estado VARCHAR(45) NOT NULL,
     cep VARCHAR(9) NOT NULL,
     pais VARCHAR(20)  NOT NULL,
-    fk_aluno INT NOT NULL UNIQUE,
-    fk_professor INT NOT NULL UNIQUE,
+    fk_tipo_entidade INT NOT NULL,
+    fk_aluno INT,
+    fk_professor INT,
+    
+CONSTRAINT FOREIGN KEY (fk_tipo_entidade)
+REFERENCES tbl_tipo_entidade (id),
     
 CONSTRAINT FOREIGN KEY (fk_aluno)
 REFERENCES tbl_alunos (ra),
 
 CONSTRAINT FOREIGN KEY (fk_professor)
-REFERENCES tbl_professores (id)
+REFERENCES tbl_professores (id),
+
+CONSTRAINT CHECK ((fk_aluno IS NOT NULL AND fk_professor IS NULL) OR (fk_aluno IS NULL AND fk_professor IS NOT NULL))
 );
 
 CREATE TABLE tbl_cursos (
