@@ -36,8 +36,8 @@ CREATE TABLE tbl_endereco (
     cep VARCHAR(9) NOT NULL,
     pais VARCHAR(20)  NOT NULL,
     fk_tipo_entidade INT NOT NULL,
-    fk_aluno INT,
-    fk_professor INT,
+    fk_aluno INT UNIQUE,
+    fk_professor INT UNIQUE,
     
 CONSTRAINT FOREIGN KEY (fk_tipo_entidade)
 REFERENCES tbl_tipo_entidade (id),
@@ -55,14 +55,14 @@ CREATE TABLE tbl_cursos (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL UNIQUE,
     descricao VARCHAR(200) NOT NULL,
-    duracao VARCHAR(45)
+    semestres INT NOT NULL
 );
 
 CREATE TABLE tbl_disciplinas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL UNIQUE,
-    carga_horaria VARCHAR(45) NOT NULL,
-    fk_curso INT NOT NULL UNIQUE,
+    carga_horaria INT NOT NULL,
+    fk_curso INT NOT NULL,
     fk_professor INT NOT NULL,
     
 CONSTRAINT FOREIGN KEY (fk_curso)
@@ -101,13 +101,14 @@ REFERENCES tbl_turmas (id)
 
 CREATE TABLE tbl_turno (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome_turno VARCHAR(10) NOT NULL
+    nome_turno VARCHAR(10) NOT NULL UNIQUE
 );
 
 CREATE TABLE tbl_turno_turmas (
-	id INT PRIMARY KEY AUTO_INCREMENT,
     fk_turno INT NOT NULL,
     fk_turma INT NOT NULL,
+    
+    PRIMARY KEY (fk_turno, fk_turma),
     
 CONSTRAINT FOREIGN KEY (fk_turno)
 REFERENCES tbl_turno (id),
@@ -123,6 +124,8 @@ CREATE TABLE tbl_professores_turmas (
     horas_semanais VARCHAR(45) NOT NULL,
     fk_professor INT NOT NULL,
     fk_turma INT NOT NULL,
+    
+    PRIMARY KEY (fk_professor, fk_turma),
     
 CONSTRAINT FOREIGN KEY (fk_professor)
 REFERENCES tbl_professores (id),
