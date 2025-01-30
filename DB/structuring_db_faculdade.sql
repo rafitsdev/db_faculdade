@@ -2,6 +2,11 @@ CREATE DATABASE db_faculdade;
 
 USE db_faculdade;
 
+CREATE TABLE tbl_tipo_entidade (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo_entidade VARCHAR(20) NOT NULL
+);
+
 CREATE TABLE tbl_alunos (
 	ra INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(250) NOT NULL,
@@ -20,11 +25,6 @@ CREATE TABLE tbl_professores (
     email VARCHAR(250) NOT NULL UNIQUE,
     cargo VARCHAR(50) NOT NULL,
     titulo VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE tbl_tipo_entidade (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_entidade VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE tbl_endereco (
@@ -75,11 +75,20 @@ REFERENCES tbl_professores (id)
 CREATE TABLE tbl_turmas (
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
-    semestre VARCHAR(45) NOT NULL,
+    semestre VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE tbl_turmas_disciplinas (
+	fk_turma INT NOT NULL,
     fk_disciplina INT NOT NULL,
     
-CONSTRAINT FOREIGN KEY (fk_disciplina)
-REFERENCES tbl_disciplinas (id)
+    PRIMARY KEY (fk_turma, fk_disciplina),
+    
+    CONSTRAINT FOREIGN KEY (fk_turma)
+    REFERENCES tbl_turmas (id),
+    
+    CONSTRAINT FOREIGN KEY (fk_disciplina)
+    REFERENCES tbl_disciplinas (id)
 );
 
 CREATE TABLE tbl_matriculas (
