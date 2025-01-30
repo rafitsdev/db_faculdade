@@ -130,7 +130,7 @@ CREATE TABLE tbl_professores_turmas (
 	data_inicio DATE NOT NULL,
     data_fim DATE NOT NULL,
     tipo_aula VARCHAR(45) NOT NULL,
-    horas_semanais VARCHAR(45) NOT NULL,
+    horas_semanais INT NOT NULL,
     fk_professor INT NOT NULL,
     fk_turma INT NOT NULL,
     
@@ -149,11 +149,11 @@ CREATE TABLE tbl_tipo_avaliacao (
 );
 
 CREATE TABLE tbl_notas (
+	id INT PRIMARY KEY AUTO_INCREMENT,
     nota DECIMAL(4,2) NOT NULL,
     data_avaliacao DATE,
     fk_matricula INT NOT NULL,
     fk_tipo_avaliacao INT NOT NULL,
-    PRIMARY KEY (fk_matricula, fk_tipo_avaliacao),
     
 CONSTRAINT FOREIGN KEY (fk_matricula)
 REFERENCES tbl_matriculas (id),
