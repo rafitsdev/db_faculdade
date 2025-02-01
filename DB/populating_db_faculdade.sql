@@ -1039,32 +1039,6 @@ INSERT INTO tbl_tipo_avaliacao (nome_tipo) VALUES
 	('Participação'),
 	('Seminário');
     
-SELECT 
-    a.ra,
-    a.nome,
-    m.fk_curso,
-    c.nome AS nome_curso,
-    m.fk_turma,
-    t.nome AS nome_turma
-FROM tbl_alunos a
-INNER JOIN tbl_matriculas m ON m.fk_aluno = a.ra
-INNER JOIN tbl_cursos c ON m.fk_curso = c.id
-INNER JOIN tbl_turmas t ON m.fk_turma = t.id
-WHERE a.ra IN (1, 2)
-ORDER BY a.ra;
-
-SELECT 
-    t.id AS id_turma,
-    t.nome AS nome_turma,
-    COUNT(m.fk_aluno) AS total_alunos
-FROM tbl_turmas t
-LEFT JOIN tbl_matriculas m ON t.id = m.fk_turma
-GROUP BY t.id, t.nome
-ORDER BY nome_turma;
-
-    
-    SELECT * FROM tbl_turmas;
-    
 INSERT INTO tbl_notas (
 	nota,
 	data_avaliacao,
