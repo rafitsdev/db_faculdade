@@ -9,6 +9,7 @@ INSERT INTO tbl_alunos (
     email,
     telefone
 ) VALUES
+	-- 250 ALUNOS (10 EM CADA TURMA)
 	('Carlos Silva', '2000-03-15', '123.456.789-01', 'carlos.silva@email.com', '(11) 99111-2233'),
 	('Juliana Costa', '2001-07-20', '123.456.789-02', 'juliana.costa@email.com', '(11) 99111-2234'),
 	('Pedro Oliveira', '1999-05-10', '123.456.789-03', 'pedro.oliveira@email.com', '(11) 99111-2235'),
@@ -269,6 +270,7 @@ INSERT INTO tbl_professores (
 	cargo,
 	titulo
 ) VALUES 
+	-- 15 PROFESSORES
 	('Ricardo Almeida', '987.654.321-00', '(11) 98222-3344', 'Desenvolvimento de Software', 'ricardo.almeida@email.com', 'Professor', 'Mestre'),
 	('Patrícia Souza', '987.654.321-01', '(11) 98222-3345', 'Banco de Dados', 'patricia.souza@email.com', 'Professor', 'Doutora'),
 	('Marcos Oliveira', '987.654.321-02', '(11) 98222-3346', 'Redes de Computadores', 'marcos.oliveira@email.com', 'Professor', 'Doutor'),
@@ -301,6 +303,7 @@ INSERT INTO tbl_endereco (
     fk_aluno,
     fk_professor
 ) VALUES
+	-- ENDEREÇO 15 PRIMEIROS ALUNOS
 	('Rua das Flores, 123', 'Jardim das Palmeiras', 'São Paulo', 'SP', '01234-567', 'Brasil', 1, 1, NULL),
 	('Avenida Brasil, 456', 'Vila Progresso', 'São Paulo', 'SP', '02345-678', 'Brasil', 1, 2, NULL),
 	('Rua dos Sonhos, 789', 'Vila Nova', 'São Paulo', 'SP', '03456-789', 'Brasil', 1, 3, NULL),
@@ -316,6 +319,8 @@ INSERT INTO tbl_endereco (
 	('Praça do Comércio, 909', 'Vila dos Ingleses', 'São Paulo', 'SP', '13456-789', 'Brasil', 1, 13, NULL),
 	('Rua da Liberdade, 1001', 'Bairro Novo', 'São Paulo', 'SP', '14567-890', 'Brasil', 1, 14, NULL),
 	('Avenida dos Bandeirantes, 1100', 'Zona Norte', 'São Paulo', 'SP', '15678-901', 'Brasil', 1, 15, NULL),
+    
+	-- ENDEREÇO DOS PROFESSORES
 	('Rua do Saber, 15', 'Jardim Paulista', 'São Paulo', 'SP', '16789-012', 'Brasil', 2, NULL, 1),
 	('Alameda do Conhecimento, 25', 'Vila Universitária', 'São Paulo', 'SP', '17890-123', 'Brasil', 2, NULL, 2),
 	('Rua do Mestre, 35', 'Bairro da Cultura', 'São Paulo', 'SP', '18901-234', 'Brasil', 2, NULL, 3),
@@ -331,6 +336,8 @@ INSERT INTO tbl_endereco (
 	('Avenida da Inteligência, 135', 'Zona do Conhecimento', 'São Paulo', 'SP', '28901-234', 'Brasil', 2, NULL, 13),
 	('Rua da Sabedoria, 145', 'Vila dos Estudantes', 'São Paulo', 'SP', '29012-345', 'Brasil', 2, NULL, 14),
 	('Praça do Ensino, 155', 'Bairro do Saber', 'São Paulo', 'SP', '30123-456', 'Brasil', 2, NULL, 15),
+    
+    -- ENDEREÇO DOS ALUNOS RESTANTES
     ('Estrada da Paz, 7937', 'Anchieta', 'São Paulo', 'SP', '30705-345', 'Brasil', 1, 16, NULL),
 	('Rodovia Agatha Costa, 4782', 'Vila Ipiranga', 'São Paulo', 'SP', '35797-279', 'Brasil', 1, 17, NULL),
 	('Morro de Monteiro, 5572', 'Conjunto Jardim Filadélfia', 'São Paulo', 'SP', '14060-293', 'Brasil', 1, 18, NULL),
@@ -623,6 +630,7 @@ INSERT INTO tbl_turmas (
 	nome,
 	semestre
 ) VALUES
+	-- 5 TURMAS POR CURSO
 	('TURMA_ENG_SOFTWARE_1', '2025.1'),
 	('TURMA_ENG_SOFTWARE_2', '2025.1'),
 	('TURMA_ENG_SOFTWARE_3', '2025.1'),
@@ -659,29 +667,29 @@ INSERT INTO tbl_turmas_disciplinas (
 	(3, 1), (3, 2), (3, 3), (3, 4), (3, 5),
 	(4, 1), (4, 2), (4, 3), (4, 4), (4, 5),
 	(5, 1), (5, 2), (5, 3), (5, 4), (5, 5),
-
-	-- Administração
+	-- Engenharia de Software (TURMAS 1-5)
+	-- Administração (TURMAS 6-10)
 	(6, 6), (6, 7), (6, 8), (6, 9), (6, 10),
 	(7, 6), (7, 7), (7, 8), (7, 9), (7, 10),
 	(8, 6), (8, 7), (8, 8), (8, 9), (8, 10),
 	(9, 6), (9, 7), (9, 8), (9, 9), (9, 10),
 	(10, 6), (10, 7), (10, 8), (10, 9), (10, 10),
-
-	-- Medicina
+	
+	-- Medicina (TURMAS 11-15)
 	(11, 11), (11, 12), (11, 13), (11, 14), (11, 15),
 	(12, 11), (12, 12), (12, 13), (12, 14), (12, 15),
 	(13, 11), (13, 12), (13, 13), (13, 14), (13, 15),
 	(14, 11), (14, 12), (14, 13), (14, 14), (14, 15),
 	(15, 11), (15, 12), (15, 13), (15, 14), (15, 15),
-
-	-- Direito
+	
+	-- Direito (TURMAS 16-20)
 	(16, 16), (16, 17), (16, 18), (16, 19), (16, 20),
 	(17, 16), (17, 17), (17, 18), (17, 19), (17, 20),
 	(18, 16), (18, 17), (18, 18), (18, 19), (18, 20),
 	(19, 16), (19, 17), (19, 18), (19, 19), (19, 20),
 	(20, 16), (20, 17), (20, 18), (20, 19), (20, 20),
-
-	-- Arquitetura
+	
+	-- Arquitetura (TURMAS 21-25)
 	(21, 21), (21, 22), (21, 23), (21, 24), (21, 25),
 	(22, 21), (22, 22), (22, 23), (22, 24), (22, 25),
 	(23, 21), (23, 22), (23, 23), (23, 24), (23, 25),
@@ -694,6 +702,7 @@ INSERT INTO tbl_matriculas (
     fk_curso,
     fk_turma
 ) VALUES
+	-- Engenharia de Software (TURMAS 1-5)
     (1, '2025-01-01', 1, 1),
     (2, '2025-01-01', 1, 1),
     (3, '2025-01-01', 1, 1),
@@ -744,6 +753,8 @@ INSERT INTO tbl_matriculas (
     (48, '2025-01-01', 1, 5),
     (49, '2025-01-01', 1, 5),
     (50, '2025-01-01', 1, 5),
+    
+	-- Administração (TURMAS 6-10)
     (51, '2025-01-01', 2, 6),
     (52, '2025-01-01', 2, 6),
     (53, '2025-01-01', 2, 6),
@@ -794,6 +805,8 @@ INSERT INTO tbl_matriculas (
     (98, '2025-01-01', 2, 10),
     (99, '2025-01-01', 2, 10),
     (100, '2025-01-01', 2, 10),
+    
+	-- Medicina (TURMAS 11-15)
     (101, '2025-01-01', 3, 11),
     (102, '2025-01-01', 3, 11),
     (103, '2025-01-01', 3, 11),
@@ -844,6 +857,8 @@ INSERT INTO tbl_matriculas (
     (148, '2025-01-01', 3, 15),
     (149, '2025-01-01', 3, 15),
     (150, '2025-01-01', 3, 15),
+    
+	-- Direito (TURMAS 16-20)
     (151, '2025-01-01', 4, 16),
     (152, '2025-01-01', 4, 16),
     (153, '2025-01-01', 4, 16),
@@ -894,6 +909,8 @@ INSERT INTO tbl_matriculas (
     (198, '2025-01-01', 4, 20),
     (199, '2025-01-01', 4, 20),
     (200, '2025-01-01', 4, 20),
+    
+	-- Arquitetura (TURMAS 21-25)
     (201, '2025-01-01', 5, 21),
     (202, '2025-01-01', 5, 21),
     (203, '2025-01-01', 5, 21),
@@ -1045,6 +1062,8 @@ INSERT INTO tbl_notas (
 	fk_matricula,
 	fk_tipo_avaliacao
 ) VALUES
+
+	-- 2 NOTAS POR ALUNO/MATRÍCULA
 	(5.19, '2025-04-12', 1, 1),
 	(5.33, '2025-06-07', 1, 4),
 	(8.91, '2025-04-12', 2, 1),
