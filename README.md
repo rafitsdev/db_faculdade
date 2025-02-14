@@ -65,4 +65,7 @@ Este projeto está sob a licença MIT.
 
 ---
 
-✉️ **Contato:** [Seu Email ou LinkedIn]
+📬 **Contato:**
+📧 Email: [rafaelrodrigues.contatoo@gmail.com](mailto:rafaelrodrigues.contatoo@gmail.com)
+
+🔗 LinkedIn: [Rafael Martins Rodrigues](https://www.linkedin.com/in/rafaelmartinsrodrigues/)
